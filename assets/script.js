@@ -1,37 +1,37 @@
-// allow dropping task
+// Function to allow dropping tasks
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
-// drag task
+// Function to drag a task
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
-// drop task
+// Function to drop a task
 function drop(ev) {
   ev.preventDefault();
-  let data = ev.dataTransfer.getData("text");
+  var data = ev.dataTransfer.getData("text");
   ev.target.appendChild(document.getElementById(data));
 }
 
 // Get the modal element
-let modal = document.getElementById("addTaskModal");
+var modal = document.getElementById("addTaskModal");
 
 // Get the button that opens the modal
-let addTaskBtn = document.getElementById("addTaskBtn");
+var addTaskBtn = document.getElementById("addTaskBtn");
 
 // Get the <span> element that closes the modal
-let closeBtn = document.getElementsByClassName("close")[0];
+var closeBtn = document.getElementsByClassName("close")[0];
 
 // Get the form element
-let taskForm = document.getElementById("taskForm");
+var taskForm = document.getElementById("taskForm");
 
 // Get the first column (To Do column)
-let toDoColumn = document.getElementById("todo-column");
+var toDoColumn = document.getElementById("todo-column");
 
 // Get the third column (Completed column)
-let completedColumn = document.getElementById("completed-column");
+var completedColumn = document.getElementById("completed-column");
 
 // Function to check if a date is within a certain number of days from the current date
 function isWithinDays(date, days) {
@@ -89,10 +89,10 @@ taskForm.onsubmit = function (event) {
   taskCard.draggable = true;
   taskCard.addEventListener("dragstart", drag);
   taskCard.innerHTML = `
-        <h3>${taskName}</h3>
-        <p>Date: ${taskDate}</p>
-        <p>${taskDescription}</p>
-      `;
+      <h3>${taskName}</h3>
+      <p>Date: ${taskDate}</p>
+      <p>${taskDescription}</p>
+    `;
 
   // Add task card to the first column
   toDoColumn.appendChild(taskCard);
